@@ -1,9 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Studentmanagement" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Apply custom style to all TextViews -->
+        <item name="android:textViewStyle">@style/CustomTextViewStyle</item>
     </style>
 
     <style name="Theme.Studentmanagement" parent="Base.Theme.Studentmanagement" />
+
+    <!-- Custom TextView Style -->
+    <style name="CustomTextViewStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>

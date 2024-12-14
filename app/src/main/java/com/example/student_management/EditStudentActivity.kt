@@ -2,6 +2,7 @@ package com.example.student_management
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -13,14 +14,18 @@ class EditStudentActivity : AppCompatActivity() {
 
     var students: MutableList<Student>? = null
 
+    var studentIndex: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_student)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         students = Model.shared.students
 
 
-        val studentIndex = intent.getIntExtra("studentIndex", 0)
+        studentIndex = intent.getIntExtra("studentIndex", 0)
 
         val student = students?.get(studentIndex)
 
@@ -70,5 +75,19 @@ class EditStudentActivity : AppCompatActivity() {
             finish() // Finish the current activity
         }
 
+    }
+
+    // Handle the back button press
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                val intent = Intent(this, StudentDetailsActivity::class.java)
+                intent.putExtra("studentIndex", studentIndex)
+                startActivity(intent) // Start the new activity
+                finish() // Finish the current activity
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

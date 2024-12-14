@@ -2,6 +2,7 @@ package com.example.student_management
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,9 @@ class StudentDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_details)
+
+        // Enable the back button
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
         students = Model.shared.students
@@ -49,5 +53,18 @@ class StudentDetailsActivity : AppCompatActivity() {
             student?.isChecked = checkedButton.isChecked
         }
 
+    }
+
+    // Handle the back button press
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                val intent = Intent(this, StudentsListActivity::class.java)
+                startActivity(intent) // Start the new activity
+                finish() // Finish the current activity
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

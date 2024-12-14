@@ -2,14 +2,11 @@ package com.example.student_management
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.student_management.model.Model
 import com.example.student_management.model.Student
 
@@ -20,13 +17,9 @@ class NewStudentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_new_student)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         students = Model.shared.students
 
@@ -59,6 +52,19 @@ class NewStudentActivity : AppCompatActivity() {
             val intent = Intent(this, StudentsListActivity::class.java)
             startActivity(intent) // Start the new activity
             finish() // Finish the current activity
+        }
+    }
+
+    // Handle the back button press
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                val intent = Intent(this, StudentsListActivity::class.java)
+                startActivity(intent) // Start the new activity
+                finish() // Finish the current activity
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

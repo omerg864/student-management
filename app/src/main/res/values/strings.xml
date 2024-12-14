@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">student-management</string>
+    <string name="app_name">Student Management</string>
+    <string name="name">Name</string>
+    <string name="id">ID</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="studentList">Student List</string>
+    <string name="newStudent">New Student</string>
+    <string name="editStudent">Edit Student</string>
+    <string name="studentDetails">Student Details</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="avatar">Avatar</string>
+    <string name="noStudents">No Students</string>
+    <string name="fab_description">New Student</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="checked">Checked</string>
+
 </resources>

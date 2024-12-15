@@ -24,6 +24,8 @@ class StudentsListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_students_list)
 
+        supportActionBar?.title = getString(R.string.studentList)
+
 
         students = Model.shared.students
 
